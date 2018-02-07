@@ -86,7 +86,7 @@ var GulpAssetHasher = function() {
 					}
 				}
 				catch(error) {
-					cb(util.PluginError(PLUGIN_NAME, error));
+					cb(new util.PluginError(PLUGIN_NAME, error));
 
 					return;
 				}
