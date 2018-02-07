@@ -1,25 +1,27 @@
 {
-  "name": "gulp-asset-hash",
+  "name": "gulp-file-hash",
   "version": "0.2.1",
-  "description": "Gulp plugin to hash asset filenames and generate asset manifest",
+  "description": " Gulp plugin to add a hash to filenames for static assets.",
   "author": {
-    "name": "Maxwell Berkel",
-    "email": "maxwell@allbitsnbytes.com",
-    "url": "https://github.com/allbitsnbytes"
+    "name": "Julien Enselme",
+    "email": "jujens@jujens.eu",
+    "url": "https://github.com/Jenselme/"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/allbitsnbytes/gulp-asset-hash"
-  },
-  "bugs": {
-    "url": "https://github.com/allbitsnbytes/gulp-asset-hash/issues"
-  },
-  "license": [
+  "contributors": [
     {
-      "type": "MIT",
-      "url": "https://github.com/allbitsnbytes/gulp-asset-hash/blob/LICENSE.md"
+      "name": "Maxwell Berkel (original author)",
+      "email": "maxwell@allbitsnbytes.com",
+      "url": "https://github.com/allbitsnbytes"
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jenselme/gulp-file-hash"
+  },
+  "bugs": {
+    "url": "https://github.com/Jenselme/gulp-file-hash/issues"
+  },
+  "license": "MIT",
   "engines": {
     "node": ">= 0.10.x"
   },
