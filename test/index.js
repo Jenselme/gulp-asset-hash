@@ -337,7 +337,7 @@ describe('Test hashing functionality', function() {
 
 			hashFile(originalFile, function(file) {
 				expect(file.path).to.not.equal(originalPath);
-				expect(fs.lstatSync.bind(fs.lstatSync, originalPath)).to.throw(Error, 'ENOENT, no such file or directory');
+				expect(fs.lstatSync.bind(fs.lstatSync, originalPath)).to.throw(Error, 'ENOENT: no such file or directory');
 
 				done();
 			});
@@ -346,7 +346,7 @@ describe('Test hashing functionality', function() {
 
 	it('Should hash a file and remove the original', function(done) {
 		hashFile(testFiles[0], {replace: true}, function(file) {
-			expect(fs.lstatSync.bind(fs.lstatSync, file.originalPath)).to.throw(Error, 'ENOENT, no such file or directory');
+			expect(fs.lstatSync.bind(fs.lstatSync, file.originalPath)).to.throw(Error, 'ENOENT: no such file or directory');
 
 			done();
 		});
