@@ -422,3 +422,33 @@ describe('Test manifest file', function() {
 	})
 
 })
+
+
+describe('Test symlink', function() {
+	const target = 'brochure.pdf';
+	const linkName = path.join(tmpDir, 'file/brochure-link.pdf');
+	let symlinkFile;
+
+	beforeEach(function() {
+		initTestFiles();
+
+		fs.symlinkSync(target, linkName)
+		symlinkFile = new util.File({
+			path: linkName
+		})
+	})
+
+	afterEach(function() {
+		cleanupTestFiles();
+	})
+
+	it('Should resolve to hash version of target file', function(done) {
+		hashFile(symlinkFile, function(file) {
+			expect(file.hashed).to.be.true;
+			expect(file.originalPath).to.equal(linkName);
+			expect(file.path).to.not.equal(linkName);
+			expect(file.path).to.equal('tmp/file/brochure_aH4uwG4aea04ab.pdf');
+			done();
+		});
+	})
+})

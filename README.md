@@ -193,6 +193,10 @@ Assets.set({
 
 ## Change Log
 
+### [0.3.0]
+#### Feature
+- Support symlink: symlinks are replaced by the file they point to which contains the hash in its filename. They are still referenced with their path in the manifest file.
+
 ### [0.2.0] - 2015-10-29
 #### Feature
 - Added hashKey config option.  This makes it easier to manage old hashed files.

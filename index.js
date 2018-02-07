@@ -5,6 +5,7 @@
 var assets		= require('asset_hash');
 var through		= require('through2');
 var util		= require('gulp-util');
+var fs          = require('fs');
 
 
 /**
@@ -65,9 +66,10 @@ var GulpAssetHasher = function() {
 			options.save = false;
 
 			return through.obj(function(file, enc, cb) {
+				var isSymbolicLink = fs.lstatSync(file.path).isSymbolicLink();
 
 				// If file is null continue
-				if (file.isNull()) {
+				if (file.isNull() && !isSymbolicLink) {
 					cb(null, file);
 
 					return;
@@ -77,10 +79,11 @@ var GulpAssetHasher = function() {
 
 				// Hash file
 				try {
-					var result = assets.hashFiles(file.path, options);
+					var pathToHash = isSymbolicLink ? fs.realpathSync(file.path) : file.path;
+					var result = assets.hashFiles(pathToHash, options);
 
 					if (result.hashed) {
-						file.originalPath = result.original;
+						file.originalPath = file.path;
 						file.path = result.path;
 						file.hashed = true;
 					}
